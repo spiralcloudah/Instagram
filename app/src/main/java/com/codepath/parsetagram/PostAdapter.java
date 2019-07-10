@@ -14,6 +14,7 @@ import com.codepath.parsetagram.model.Post;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -112,7 +113,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 // create intent for the new activity
                 Intent intent = new Intent(context, PostDetailsActivity.class);
                 // serialize the post using parceler, use its short name as a key
-                intent.putExtra(Post.class.getSimpleName(), post);
+                intent.putExtra(Post.class.getSimpleName(), (Serializable) post);
                 // show the activity
                 context.startActivity(intent);
             }

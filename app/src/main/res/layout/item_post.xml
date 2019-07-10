@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView3"
         android:layout_alignStart="@+id/ivImage"
+        android:layout_marginStart="8dp"
         android:text="Username"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -44,9 +45,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="368dp"
-        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_alignStart="@+id/ivImage"
+        android:layout_marginLeft="5dp"
         android:layout_below="@+id/ivImage"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ic_like_cmment" />

@@ -6,7 +6,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.parsetagram.model.Post;
+import com.parse.ParseException;
 
 public class PostDetailsActivity extends AppCompatActivity {
 
@@ -37,6 +39,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         Log.d("PostDetailsActivity", String.format("Showing details for '%s'", post.getDescription()));
 
         tvDescription.setText(post.getDescription());
+        Glide.with(this).load(post.getImage().getUrl()).into(ivImage);
+        try {
+            tvUser.setText(post.getUser().fetchIfNeeded().getUsername());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        tvDate.setText(ParseRelativeDate.getRelativeTimeAgo(post.getCreatedAt()));
 
     }
 }
