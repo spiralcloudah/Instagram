@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [X] The current signed in user is persisted across app restarts
 - [X] User can take a photo, add a caption, and post it to "Instagram"
 - [X] User can view the last 20 posts submitted to "Instagram"
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [X] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [X] User can tap a post to view post details, including timestamp and caption.
 
 The following **stretch** features are implemented:
@@ -36,7 +36,7 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] Functional back button; "New Post" title; Image Preview
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
