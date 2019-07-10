@@ -1,15 +1,12 @@
 package com.codepath.parsetagram;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.codepath.parsetagram.model.Post;
 
@@ -17,7 +14,6 @@ import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
 
-    private SwipeRefreshLayout swipeContainer;
     private List<Post> mPosts;
 
 
@@ -50,31 +46,6 @@ public class FeedActivity extends AppCompatActivity {
         ft.replace(R.id.FragmentPlace, fragment);
 
         ft.commit();
-
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-        // Setup refresh listener which triggers new data loading
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // Your code here
-                Toast.makeText(getApplicationContext(), "Works!", Toast.LENGTH_LONG).show();
-                // To keep animation for 4 seconds
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        // Stop animation (This will be after 3 seconds)
-                        swipeContainer.setRefreshing(false);
-                    }
-                }, 4000); // Delay in millis
-            }
-        });
-
-        // Scheme colors for animation
-        swipeContainer.setColorSchemeColors(
-                getResources().getColor(android.R.color.holo_blue_bright),
-                getResources().getColor(android.R.color.holo_green_light),
-                getResources().getColor(android.R.color.holo_orange_light),
-                getResources().getColor(android.R.color.holo_red_light)
-        );
 
     }
 

@@ -1,26 +1,25 @@
 package com.codepath.parsetagram;
 
-import android.content.Context;
-import android.graphics.Movie;
-import android.net.Uri;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.codepath.parsetagram.model.Post;
+import com.loopj.android.http.AsyncHttpClient;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.parse.Parse.getApplicationContext;
 
 
 public class FeedFragment extends Fragment {
@@ -29,6 +28,7 @@ public class FeedFragment extends Fragment {
     public RecyclerView rvPost;
     PostAdapter adapter;
     AsyncHttpClient client;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +45,34 @@ public class FeedFragment extends Fragment {
 
         rvPost.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPost.setAdapter(adapter);
+
+
+
+
+        swipeContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code here
+                Toast.makeText(getApplicationContext(), "Refreshed!", Toast.LENGTH_LONG).show();
+                // To keep animation for 4 seconds
+                posts.clear();
+                adapter.clear();
+                loadTopPosts();
+
+            }
+        });
+
+        // Scheme colors for animation
+        swipeContainer.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light)
+        );
+
+
 
         loadTopPosts();
 
@@ -90,6 +118,7 @@ public class FeedFragment extends Fragment {
                 } else {
                     e.printStackTrace();
                 }
+                swipeContainer.setRefreshing(false);
             }
         });
     }
