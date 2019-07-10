@@ -12,14 +12,48 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:background="#FFFFFF"
         android:src="@drawable/nav_logo_whiteout"
         app:layout_constraintBottom_toTopOf="@+id/swipeContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ufi_new_direct"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ufi_new_direct" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/camera"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/camera" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="32dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="49dp"
+        android:background="@drawable/icon_tv"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/icon_tv" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeContainer"

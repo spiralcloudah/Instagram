@@ -1,37 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_2"
+    android:background="#FFFFFF"
     tools:context=".AddPhotoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
+        android:id="@+id/topThingy"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#EBE7E7"
+        app:layout_constraintBottom_toTopOf="@+id/ivPreview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/ivPreview"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:layout_marginTop="-50dp"
 
+        android:layout_marginStart="4dp"
         android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPost"
         app:srcCompat="@drawable/camera_shadow_fill" />
 
     <Button
         android:id="@+id/btnClick"
-        android:layout_width="215dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
 
-        android:layout_marginTop="100dp"
-
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/listgrad"
-        android:text="click new photo"
-        android:textColor="@color/colorPrimaryText" />
+        android:text="Click To Add Photo"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPreview" />
 
     <Button
         android:id="@+id/btnPost"
@@ -39,22 +54,65 @@
         android:layout_height="37dp"
         android:layout_centerVertical="false"
         android:layout_gravity="right|top"
-        android:layout_marginTop="5dp"
 
-        android:background="#1AFAF9F9"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="#EBE7E7"
         android:text="Share"
         android:textColor="@color/blue_5"
-        android:textStyle="bold" />
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00C9C7C7"
+        android:baselineAlignBottom="true"
+        android:cropToPadding="true"
+        android:gravity="top"
+        android:scaleType="fitXY"
+        android:onClick="changeFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="wrap_content"
-        android:layout_height="59dp"
+        android:layout_height="wrap_content"
 
         android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Write a caption.."
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:textColor="#030303"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivPreview"
+        app:layout_constraintTop_toBottomOf="@+id/btnPost" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="8dp"
+        android:text="New Post"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btnPost"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

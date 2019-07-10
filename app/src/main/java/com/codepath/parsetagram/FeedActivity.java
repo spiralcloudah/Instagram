@@ -16,7 +16,7 @@ public class FeedActivity extends AppCompatActivity {
 
     private List<Post> mPosts;
 
-
+    ImageButton ibBack;
     ImageButton ibHome;
     ImageButton ibProfile;
     ImageButton ibAdd;
@@ -31,6 +31,7 @@ public class FeedActivity extends AppCompatActivity {
 
         ibAdd = (ImageButton) findViewById(R.id.ibAdd);
         ibHome = (ImageButton) findViewById(R.id.ibHome);
+        ibBack = (ImageButton) findViewById(R.id.ibBack);
         ibProfile = (ImageButton) findViewById(R.id.ibProfile);
 
         ibHome.setImageResource(R.drawable.instagram_home_filled_24);
@@ -53,7 +54,7 @@ public class FeedActivity extends AppCompatActivity {
     public void changeFragment(View view){
         Fragment fragment;
 
-        if (view == findViewById(R.id.ibHome)) {
+        if (view == findViewById(R.id.ibHome) || view == findViewById(R.id.ibBack)) {
 
             ibAdd.setImageResource(R.drawable.instagram_new_post_outline_24);
             ibHome.setImageResource(R.drawable.instagram_home_filled_24);
@@ -98,6 +99,8 @@ public class FeedActivity extends AppCompatActivity {
 
             ft.commit();
         }
+
+
 
     }
 
