@@ -145,7 +145,6 @@ public class AddPhotoFragment extends Fragment {
         }
     }
 
-
     public void postPhoto(final String description, final ParseFile imageFile, final ParseUser user){
 
         pbProgressAction.setVisibility(View.VISIBLE);
