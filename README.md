@@ -38,6 +38,7 @@ The following **additional** features are implemented:
 
 - [X] Functional back button; "New Post" title; Image Preview
 - [X] Display Toast messages when a user logs in, posts successfully, fails to make a post, etc.
+- [X] Added a "settings" tab to confirm logout action
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
