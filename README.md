@@ -24,7 +24,7 @@ The following **stretch** features are implemented:
 - [ ] User should switch between different tabs - viewing all posts (feed view), capture (camera and photo gallery view) and profile tabs (posts made) using a Bottom Navigation View.
 - [X] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [X] Show the username and creation time for each post
-- [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
+- [X] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
 - User Profiles:
   - [ ] Allow the logged in user to add a profile photo
   - [ ] Display the profile photo with each post
@@ -37,10 +37,12 @@ The following **stretch** features are implemented:
 The following **additional** features are implemented:
 
 - [X] Functional back button; "New Post" title; Image Preview
+- [X] Display Toast messages when a user logs in, posts successfully, fails to make a post, etc.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
+1. I believe the progress bar (that runs while something is posting) is not too helpful, as it often times does not pop up because of how fast the server responds (although this may change depending on how others implemented their apps). Either the progress bar should be implemented for a set time or not implemented at all. 
+
 2.
 
 ## Video Walkthrough
