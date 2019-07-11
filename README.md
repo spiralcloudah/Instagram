@@ -41,7 +41,7 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. I believe the progress bar (that runs while something is posting) is not too helpful, as it often times does not pop up because of how fast the server responds (although this may change depending on how others implemented their apps). An indeterminate progress bar is more fun in my opinion.
+1. I believe the progress bar (that runs while something is posting) is not too helpful, as it often times does not pop up because of how fast the server responds (although this may change depending on how others implemented their apps). Either the progress bar should be implemented for a set time or not implemented at all. 
 
 2.
 
