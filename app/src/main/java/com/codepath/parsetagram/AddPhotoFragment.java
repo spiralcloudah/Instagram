@@ -2,7 +2,6 @@ package com.codepath.parsetagram;
 
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,19 +19,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.codepath.parsetagram.model.Post;
 import com.loopj.android.http.AsyncHttpClient;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -56,6 +52,7 @@ public class AddPhotoFragment extends Fragment {
     PostAdapter adapter;
     AsyncHttpClient client;
 
+    ProgressBar pbProgressAction;
 
     ///
     public final String APP_TAG = "MyCustomApp";
@@ -72,6 +69,7 @@ public class AddPhotoFragment extends Fragment {
         imageView = (ImageView) rootView.findViewById(R.id.ivPreview);
         etDescription = (EditText) rootView.findViewById(R.id.etDescription);
         postBtn = (Button) rootView.findViewById(R.id.btnPost);
+        pbProgressAction = (ProgressBar) rootView.findViewById(R.id.pbProgressAction);
 
         client = new AsyncHttpClient();
         posts = new ArrayList<>();
@@ -150,6 +148,7 @@ public class AddPhotoFragment extends Fragment {
 
     public void postPhoto(final String description, final ParseFile imageFile, final ParseUser user){
 
+        pbProgressAction.setVisibility(View.VISIBLE);
         imageFile.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -178,6 +177,7 @@ public class AddPhotoFragment extends Fragment {
                 }
             }
         });
+        pbProgressAction.setVisibility(View.INVISIBLE);
     }
 
 
