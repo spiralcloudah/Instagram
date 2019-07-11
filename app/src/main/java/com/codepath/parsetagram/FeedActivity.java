@@ -17,6 +17,7 @@ public class FeedActivity extends AppCompatActivity {
     private List<Post> mPosts;
 
     ImageButton ibBack;
+    ImageButton ibSettings;
     ImageButton ibHome;
     ImageButton ibProfile;
     ImageButton ibAdd;
@@ -33,6 +34,7 @@ public class FeedActivity extends AppCompatActivity {
         ibHome = (ImageButton) findViewById(R.id.ibHome);
         ibBack = (ImageButton) findViewById(R.id.ibBack);
         ibProfile = (ImageButton) findViewById(R.id.ibProfile);
+        ibSettings = (ImageButton) findViewById(R.id.ibSettings);
 
         ibHome.setImageResource(R.drawable.instagram_home_filled_24);
 
@@ -59,6 +61,7 @@ public class FeedActivity extends AppCompatActivity {
             ibAdd.setImageResource(R.drawable.instagram_new_post_outline_24);
             ibHome.setImageResource(R.drawable.instagram_home_filled_24);
             ibProfile.setImageResource(R.drawable.instagram_user_outline_24);
+            ibSettings.setImageResource(R.drawable.ufi_save);
 
             fragment = feedFragment;
 
@@ -74,6 +77,7 @@ public class FeedActivity extends AppCompatActivity {
             ibAdd.setImageResource(R.drawable.instagram_new_post_filled_24);
             ibHome.setImageResource(R.drawable.instagram_home_outline_24);
             ibProfile.setImageResource(R.drawable.instagram_user_outline_24);
+            ibSettings.setImageResource(R.drawable.ufi_save);
 
             fragment = addPhotoFragment;
 
@@ -89,7 +93,23 @@ public class FeedActivity extends AppCompatActivity {
             ibAdd.setImageResource(R.drawable.instagram_new_post_outline_24);
             ibHome.setImageResource(R.drawable.instagram_home_outline_24);
             ibProfile.setImageResource(R.drawable.instagram_user_filled_24);
+            ibSettings.setImageResource(R.drawable.ufi_save);
 
+            fragment = profileFragment;
+
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.FragmentPlace, fragment);
+
+            ft.commit();
+
+        } else if (view == findViewById(R.id.ibSettings)) {
+
+
+            ibAdd.setImageResource(R.drawable.instagram_new_post_outline_24);
+            ibHome.setImageResource(R.drawable.instagram_home_outline_24);
+            ibProfile.setImageResource(R.drawable.instagram_user_outline_24);
+            ibSettings.setImageResource(R.drawable.ufi_save_active);
 
             fragment = profileFragment;
 

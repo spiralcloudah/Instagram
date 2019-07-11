@@ -45,17 +45,17 @@
         app:srcCompat="@drawable/instagram_home_outline_24" />
 
     <ImageButton
-        android:id="@+id/ibSearch"
-        android:layout_width="59.58333dp"
-        android:layout_height="55dp"
+        android:id="@+id/ibSettings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginBottom="-4dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="0dp"
         android:gravity="top"
         android:onClick="changeFragment"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/icon_search" />
+        app:srcCompat="@drawable/ufi_save" />
 
     <ImageButton
         android:id="@+id/ibAdd"
