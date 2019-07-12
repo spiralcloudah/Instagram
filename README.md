@@ -59,7 +59,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Making a grid view for the profile fragment and understanding fragments in general was a little bit 
+Making a grid view for the profile fragment and understanding fragments in general took a little bit longer to figure out compared to other implementations/concepts.
 
 ## License
 
