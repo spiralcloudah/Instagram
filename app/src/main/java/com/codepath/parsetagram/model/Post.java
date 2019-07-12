@@ -12,7 +12,8 @@ import java.io.Serializable;
 public class Post extends ParseObject implements Serializable {
     private static final String KEY_DESCRIPTION = "description";
     private static final String KEY_IMAGE = "image";
-    private static final String KEY_USER = "user";
+    public static final String KEY_USER = "user";
+    private static final String KEY_PROFILE = "profile";
 
     // no-arg, empty constructor required for Parceler
     public Post() {}
@@ -33,6 +34,10 @@ public class Post extends ParseObject implements Serializable {
     public void setImage(ParseFile image){
         put(KEY_IMAGE, image);
     }
+
+    public ParseFile getProfileImage() { return getParseFile(KEY_PROFILE); }
+
+    public void setProfileImage(ParseFile pImage) { put(KEY_PROFILE, pImage); }
 
     public ParseUser getUser() {
         return getParseUser(KEY_USER);

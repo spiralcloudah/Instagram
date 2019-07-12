@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class AddPhotoFragment extends Fragment {
 
     Button button;
     ImageView imageView;
+    ImageButton profileButton;
     EditText etDescription;
     Button postBtn;
     String currentPhotoPath = "/storage/emulated/0/DCIM/Camera/IMG_20180614_110011.jpg";
@@ -67,6 +69,7 @@ public class AddPhotoFragment extends Fragment {
 
         button = (Button) rootView.findViewById(R.id.btnClick);
         imageView = (ImageView) rootView.findViewById(R.id.ivPreview);
+        profileButton = (ImageButton) rootView.findViewById(R.id.ibProfilePic);
         etDescription = (EditText) rootView.findViewById(R.id.etDescription);
         postBtn = (Button) rootView.findViewById(R.id.btnPost);
         pbProgressAction = (ProgressBar) rootView.findViewById(R.id.pbProgressAction);
@@ -74,7 +77,7 @@ public class AddPhotoFragment extends Fragment {
         client = new AsyncHttpClient();
         posts = new ArrayList<>();
 
-        adapter = new PostAdapter(posts);
+        adapter = new PostAdapter(posts, 0);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +143,7 @@ public class AddPhotoFragment extends Fragment {
                 currentPath = photoFile.getPath();
                 Bitmap bitmap = BitmapFactory.decodeFile(currentPath);
                 imageView.setImageBitmap(bitmap);
+                profileButton.setImageBitmap(bitmap);
 
             }
         }
@@ -155,6 +159,7 @@ public class AddPhotoFragment extends Fragment {
                     final Post newPost = new Post();
                     newPost.setDescription(description);
                     newPost.setImage(imageFile);
+                    newPost.setProfileImage(imageFile);
                     newPost.setUser(user);
                     newPost.saveInBackground();
                     posts.add(newPost);

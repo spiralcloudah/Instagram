@@ -3,10 +3,13 @@ package com.codepath.parsetagram;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,9 +26,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<Post> mPosts;
     Context context;
 
+    int whichFragment;
+
     //pass in the post array
-    public PostAdapter(List<Post> posts) {
+    public PostAdapter(List<Post> posts, int whichFragment) {
         mPosts = posts;
+        this.whichFragment=whichFragment;
     }
 
     public TextView tvDate;
@@ -57,9 +63,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Post post = mPosts.get(position);
 
+        if(whichFragment==0){
         try {
             holder.tvDate.setText(ParseRelativeDate.getRelativeTimeAgo(post.getCreatedAt()));
-
+            holder.tvUserName2.setText(post.getUser().fetchIfNeeded().getUsername());
             holder.tvUserName.setText(post.getUser().fetchIfNeeded().getUsername()); //????
         } catch (ParseException e) {
             e.printStackTrace();
@@ -73,7 +80,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         Glide.with(context)
                 .load(post.getImage().getUrl())
-                .into(holder.ivImage);
+                .into(holder.ivImage);}
+        else if(whichFragment==1){
+            holder.tvDate.setVisibility(View.GONE);
+            holder.tvDesc.setVisibility(View.GONE);
+            holder.tvUserName.setVisibility(View.GONE);
+            holder.tvUserName2.setVisibility(View.GONE);
+            Glide.with(context)
+                    .load(post.getImage().getUrl())
+                    .into(holder.ivImage);
+
+            DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+            int pxWidth = displayMetrics.widthPixels;
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(pxWidth/3, pxWidth/3);
+            holder.ivImage.setLayoutParams(layoutParams);
+            Glide.with(context).load(post.getImage().getUrl()).into(holder.ivImage);
+
+        }
+       // Glide.with(context)
+        //        .load(post.getProfileImage().getUrl())
+        //        .into(holder.ibProfilePic);
 
     }
 
@@ -82,11 +109,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return mPosts.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        public ImageButton ibProfilePic;
         public ImageView ivImage;
         public TextView tvUserName;
+        public TextView tvUserName2;
         public TextView tvDesc;
         public TextView tvDate;
 
@@ -94,8 +122,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
 
+            ibProfilePic = (ImageButton) itemView.findViewById(R.id.ibProfilePic);
             ivImage = (ImageView) itemView.findViewById(R.id.ivImage);
             tvUserName = (TextView) itemView.findViewById(R.id.tvUser);
+            tvUserName2 = (TextView) itemView.findViewById(R.id.tvUser2);
             tvDesc = (TextView) itemView.findViewById(R.id.tvDescription);
             tvDate = (TextView) itemView.findViewById(R.id.tvDate);
 

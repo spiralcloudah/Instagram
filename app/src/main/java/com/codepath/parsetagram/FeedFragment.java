@@ -32,6 +32,7 @@ public class FeedFragment extends Fragment {
     PostAdapter adapter;
     AsyncHttpClient client;
     private SwipeRefreshLayout swipeContainer;
+    int whichFragment=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +44,7 @@ public class FeedFragment extends Fragment {
         client = new AsyncHttpClient();
         posts = new ArrayList<>();
 
-        adapter = new PostAdapter(posts);
+        adapter = new PostAdapter(posts, whichFragment);
         rvPost = (RecyclerView) rootView.findViewById(R.id.rvPosts);
 
         rvPost.setLayoutManager(new LinearLayoutManager(getContext()));
