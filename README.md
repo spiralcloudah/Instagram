@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **25** hours spent in total
 
 ## User Stories
 
@@ -29,8 +29,6 @@ The following **stretch** features are implemented:
   - [X] Allow the logged in user to add a profile photo
   - [X] Display the profile photo with each post
   - [X] Tapping on a post's username or profile photo goes to that user's profile page
-- [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
 
 The following **additional** features are implemented:
 
@@ -42,7 +40,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 1. I believe the progress bar (that runs while something is posting) is not too helpful, as it often times does not pop up because of how fast the server responds (although this may change depending on how others implemented their apps). Either the progress bar should be implemented for a set time or not implemented at all. 
 
-2.
+2. I would also like to discus some other optional features, such as saving other people's posts or even creating a search button/fragment.
 
 ## Video Walkthrough
 
@@ -61,7 +59,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Making a grid view for the profile fragment and understanding fragments in general was a little bit 
 
 ## License
 
