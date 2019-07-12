@@ -143,7 +143,7 @@ public class AddPhotoFragment extends Fragment {
                 currentPath = photoFile.getPath();
                 Bitmap bitmap = BitmapFactory.decodeFile(currentPath);
                 imageView.setImageBitmap(bitmap);
-                profileButton.setImageBitmap(bitmap);
+              //  profileButton.setImageBitmap(bitmap);
 
             }
         }

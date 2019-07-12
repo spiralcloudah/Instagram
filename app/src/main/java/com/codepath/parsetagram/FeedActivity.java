@@ -1,5 +1,6 @@
 package com.codepath.parsetagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 
 import com.codepath.parsetagram.model.Post;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
@@ -127,5 +129,29 @@ public class FeedActivity extends AppCompatActivity {
     }
 
 
+    public void showDetailsFor(Serializable post) {
+        // create intent for the new activity
+        Intent intent = new Intent(this, PostDetailsActivity.class);
+        // serialize the post using parceler, use its short name as a key
+        intent.putExtra(Post.class.getSimpleName(), (Serializable) post);
+        // show the activity
+        startActivityForResult(intent,123);
+    }
 
+    public void showProfileFragment(Post post) {
+        Fragment fragment;
+
+        ibAdd.setImageResource(R.drawable.instagram_new_post_outline_24);
+        ibHome.setImageResource(R.drawable.instagram_home_outline_24);
+        ibProfile.setImageResource(R.drawable.instagram_user_filled_24);
+        ibSettings.setImageResource(R.drawable.ufi_save);
+
+        fragment = profileFragment;
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.FragmentPlace, fragment);
+
+        ft.commit();
+    }
 }

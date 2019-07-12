@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -25,12 +26,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.codepath.parsetagram.model.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,6 +76,16 @@ public class ProfileFragment extends Fragment {
         ibProfilePic = rootView.findViewById(R.id.ibProfilePic);
         String currentUser = ParseUser.getCurrentUser().getUsername(); // this will now be null
         System.out.println("The current user is "+ currentUser);
+
+
+        ParseFile p = ParseUser.getCurrentUser().getParseFile("profilePic");
+        if(p != null) {
+            Glide.with(getContext())
+                    .load(p.getUrl())
+                    .into(ibProfilePic);
+
+            ibProfilePic.setBackgroundColor(Color.WHITE);
+        }
 
         rvPostView= rootView.findViewById(R.id.rvPostView);
 
@@ -215,24 +226,27 @@ public class ProfileFragment extends Fragment {
 
                 parseFile = new ParseFile(photoFile);
 
-                parseFile.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null){
-                            String s = parseFile.getUrl();
-                            Drawable draw = LoadImageFromWebOperations(s);
-                            ibProfilePic.setBackgroundDrawable(ob);
-                        //    ibProfilePic.saveInBackground();
+                ParseUser.getCurrentUser().put("profilePic", parseFile);
+                ParseUser.getCurrentUser().saveInBackground();
 
-                        } else {
-                            e.printStackTrace();
-                            Toast.makeText(getContext(),"Could not save Profile Pic",Toast.LENGTH_LONG).show();
-                            String s = "Failed: " + e.getMessage() + " ... ";
-                            Log.d("ProfileFragment",s);
-
-                        }
-                    }
-                });
+//                parseFile.saveInBackground(new SaveCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        if (e == null){
+//                            String s = parseFile.getUrl();
+//                            Drawable draw = LoadImageFromWebOperations(s);
+//                            ibProfilePic.setBackgroundDrawable(ob);
+//                        //    ibProfilePic.saveInBackground();
+//
+//                        } else {
+//                            e.printStackTrace();
+//                            Toast.makeText(getContext(),"Could not save Profile Pic",Toast.LENGTH_LONG).show();
+//                            String s = "Failed: " + e.getMessage() + " ... ";
+//                            Log.d("ProfileFragment",s);
+//
+//                        }
+//                    }
+//                });
 
             }
 

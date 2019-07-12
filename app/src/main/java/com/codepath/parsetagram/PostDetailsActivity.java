@@ -1,5 +1,6 @@
 package com.codepath.parsetagram;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.parsetagram.model.Post;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 
 public class PostDetailsActivity extends AppCompatActivity {
 
@@ -53,6 +55,16 @@ public class PostDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         tvDate.setText(ParseRelativeDate.getRelativeTimeAgo(post.getCreatedAt()));
+
+        ParseFile p = post.getUser().getParseFile("profilePic");
+        if(p != null) {
+            Glide.with(this)
+                    .load(p.getUrl())
+                    .into(ibProfilePic);
+
+            ibProfilePic.setBackgroundColor(Color.WHITE);
+        }
+
 
     }
 }
